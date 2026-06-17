@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import { runCode, shareCode, getSnippet, explainCode } from "./api";
 
@@ -39,7 +39,7 @@ export default function App() {
   const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    // const params = new URLSearchParams(window.location.search);
     const id = window.location.pathname.split("/s/")[1];
     if (id) {
       getSnippet(id).then((s) => {
@@ -100,7 +100,7 @@ export default function App() {
             disabled={running}
             style={{ background: pulse ? "#6d28d9" : "#7c3aed", color: "#fff", border: "none", borderRadius: "6px", padding: "6px 16px", fontSize: "13px", fontWeight: 600, cursor: "pointer", transition: "background 0.2s" }}
           >
-            {running ? "Running..." : "▶ Run"}
+            {running ? "Running..." : "? Run"}
           </button>
           <button
             onClick={handleShare}
@@ -121,7 +121,7 @@ export default function App() {
 
       {shareUrl && (
         <div style={{ background: "#1a1a2e", borderBottom: "1px solid #2a2a2a", padding: "8px 24px", fontSize: "13px", color: "#7c3aed" }}>
-          ✓ Copied: <span style={{ color: "#f0f0f0" }}>{shareUrl}</span>
+          ? Copied: <span style={{ color: "#f0f0f0" }}>{shareUrl}</span>
         </div>
       )}
 
